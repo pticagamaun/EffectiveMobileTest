@@ -1,0 +1,81 @@
+# Xcode
+#
+.DS_Store
+*.swp
+*.lock
+*.xcuserstate
+*.log
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# Obj-C/Swift specific
+*.hmap
+*.ipa
+
+# Fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots/**/*.png
+fastlane/test_output
+
+# CocoaPods
+#
+# We recommend against adding the Pods directory to your .gitignore.
+# However, if you do wish to add it, comment out the line below.
+# Pods/
+
+# Carthage
+#
+# Add this line if you want to avoid checking in source code from Carthage dependencies.
+# Carthage/Checkouts
+
+Carthage/Build
+
+# Accio dependency management
+Dependencies/
+.accio/
+
+# Derived Data
+#
+# Add the line below if you want to avoid checking in source code from Swift Package Manager dependencies.
+# .build/
+
+DerivedData/
+build/
+
+# JetBrains IDEs
+#
+.idea/
+
+# Mac OS metadata
+#
+*.DS_Store
+.AppleDouble
+.LSOverride
+
+# Icon must end with two \r
+Icon
+
+# Thumbnails
+._*
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Exclude all .storyboard files
+*.storyboard
+
