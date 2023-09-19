@@ -6,3 +6,13 @@
 //
 
 import Foundation
+
+struct Categories: Decodable {
+    let categories: [Category]
+}
+
+struct Category: Decodable {
+    let id: Int
+    let name: String
+    let imageURL: URL
+}
