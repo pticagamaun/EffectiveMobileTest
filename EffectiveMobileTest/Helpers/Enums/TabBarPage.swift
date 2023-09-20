@@ -12,12 +12,11 @@ protocol TabBarPageProtocol {
     func pageTitleValue() -> String
     func pageOrderNumber() -> Int
     func icon() -> UIImage?
-    func selectedIcon() -> UIImage?
 }
 
 enum TabBarPage: TabBarPageProtocol {
     
-    case main
+    case categories
     case search
     case cart
     case profile
@@ -25,7 +24,7 @@ enum TabBarPage: TabBarPageProtocol {
     init?(index: Int) {
         switch index {
         case 0:
-            self = .main
+            self = .categories
         case 1:
             self = .search
         case 2:
@@ -39,7 +38,7 @@ enum TabBarPage: TabBarPageProtocol {
     
     func pageTitleValue() -> String {
         switch self {
-        case .main:
+        case .categories:
             return "Main"
         case .search:
             return "Search"
@@ -52,7 +51,7 @@ enum TabBarPage: TabBarPageProtocol {
     
     func pageOrderNumber() -> Int {
         switch self {
-        case .main:
+        case .categories:
             return 0
         case .search:
             return 1
@@ -65,27 +64,14 @@ enum TabBarPage: TabBarPageProtocol {
     
     func icon() -> UIImage? {
         switch self {
-        case .main:
-            return UIImage(systemName: "house")
+        case .categories:
+            return UIImage(named: "main")
         case .search:
-            return UIImage(systemName: "magnifyingglass")
+            return UIImage(named: "search")
         case .cart:
-            return UIImage(systemName: "cart")
+            return UIImage(named: "cart")
         case .profile:
-            return UIImage(systemName: "person")
-        }
-    }
-    
-    func selectedIcon() -> UIImage? {
-        switch self {
-        case .main:
-            return UIImage(systemName: "house.fill")
-        case .search:
-            return UIImage(systemName: "magnifyingglass.fill")
-        case .cart:
-            return UIImage(systemName: "cart.fill")
-        case .profile:
-            return UIImage(systemName: "person.fill")
+            return UIImage(named: "profile")
         }
     }
 }

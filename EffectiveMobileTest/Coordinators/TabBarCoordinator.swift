@@ -28,7 +28,7 @@ final class TabBarCoordinator: TabBarCoordinatorProtocol {
     internal var type: CoordinatorType { .tab }
     
     internal func start() {
-        let pages: [TabBarPage] = [.main, .search, .cart, .profile]
+        let pages: [TabBarPage] = [.categories, .search, .cart, .profile]
             .sorted(by: { $0.pageOrderNumber() < $1.pageOrderNumber() })
         let controllers: [UINavigationController] = pages.map({ getTabController($0) })
         prepareTabBarController(withTabControllers: controllers)
@@ -53,24 +53,29 @@ final class TabBarCoordinator: TabBarCoordinatorProtocol {
     
     private func prepareTabBarController(withTabControllers tabControllers: [UIViewController]) {
         tabBarController.setViewControllers(tabControllers, animated: true)
-        tabBarController.selectedIndex = TabBarPage.main.pageOrderNumber()
+        tabBarController.selectedIndex = TabBarPage.categories.pageOrderNumber()
         tabBarController.tabBar.isTranslucent = false
         tabBarController.tabBar.backgroundColor = .white
+        tabBarController.tabBar.clipsToBounds = false
+        tabBarController.tabBar.layer.shadowColor = UIColor.black.cgColor
+        tabBarController.tabBar.layer.shadowOpacity = 0.8
+        tabBarController.tabBar.layer.shadowOffset = CGSize(width: 0, height: 0.1)
+        tabBarController.tabBar.layer.shadowRadius = 1
         navigationController.viewControllers = [tabBarController]
     }
     
     private func getTabController(_ page: TabBarPage) -> UINavigationController {
         let navController = UINavigationController()
         navController.setNavigationBarHidden(false, animated: false)
-        navController.tabBarItem = UITabBarItem.init(title: page.pageTitleValue(),
-                                                     image: nil,
-                                                     tag: page.pageOrderNumber())
+        navController.tabBarItem = UITabBarItem(title: page.pageTitleValue(),
+                                                image: page.icon(),
+                                                tag: page.pageOrderNumber())
         switch page {
-        case .main:
-            let mainVC = MainViewController()
+        case .categories:
+            let mainVC = CategoriesViewController()
             mainVC.didSendEventClosure = { [weak self] event in
                 switch event {
-                case .main:
+                case .categories:
                     self?.selectPage(.search)
                 }
             }
